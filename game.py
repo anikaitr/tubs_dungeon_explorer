@@ -96,6 +96,8 @@ def move_player(game, direction: str) -> None:
 
     if game.current_level.level[new_y][new_x] == "c":
         game.current_level.level[new_y][new_x] = "."
+        soundObj = pygame.mixer.Sound("chest.mp3")
+        soundObj.play()
         item = "key"
         if item == "key":
             game.items.append("key")
@@ -132,6 +134,8 @@ def move_player(game, direction: str) -> None:
 
     if game.current_level.level[new_y][new_x] == "y":
         game.current_level.level[new_y][new_x] = "."
+        soundObj = pygame.mixer.Sound("piggybank.mp3")
+        soundObj.play()
         game.coins += 100
 
     # open closed door
