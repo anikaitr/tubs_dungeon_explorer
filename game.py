@@ -82,6 +82,8 @@ def move_player(game, direction: str) -> None:
 
     if game.current_level.level[new_y][new_x] == "€":
         game.current_level.level[new_y][new_x] = "."
+        soundObj = pygame.mixer.Sound("coin.mp3")
+        soundObj.play()
         game.coins += 1
 
     if game.current_level.level[new_y][new_x] == "a":
@@ -185,6 +187,10 @@ LEVEL_TWO = Level(
         ]
     ),
 
+    fireballs = [
+        FireBall(x = 1, y = 1, direction = "down", damage = 1),
+    ],
+
     snakes = [
         Snake(x = 4, y = 6, direction = "left", damage = 2),
         Snake(x = 10, y = 3, direction = "up", damage = 2),
@@ -273,7 +279,7 @@ def get_next_position(x, y, direction):
 def move_fireball(game):
     for f in game.current_level.fireballs:
         new_x, new_y = get_next_position(f.x, f.y, f.direction)
-        if (game.current_level.level[new_y][new_x] in ".€kdDdta"):
+        if (game.current_level.level[new_y][new_x] in ".€kdDdtay"):
             f.x, f.y = new_x, new_y
         elif game.current_level.level[new_y][new_x] == "#" or game.current_level.level[new_y][new_x] == "x":
             if f.direction == "up":
