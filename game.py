@@ -162,6 +162,8 @@ LEVEL_ONE = Level(
 
     fireballs = [
         FireBall(x = 1, y = 2, direction = "right", damage = 1),
+        FireBall(x = 1, y = 8, direction = "up", damage = 1),
+        FireBall(x = 7, y = 6, direction = "up", damage = 1),
         FireBall(x = 1, y = 8, direction = "left", damage = 1),
     ],
 
